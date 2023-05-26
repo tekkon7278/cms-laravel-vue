@@ -13,10 +13,11 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+Route::redirect('/', '/cms/sites');
 Route::view('/cms/sites', 'cms.index');
 Route::view('/cms/sites/{siteId}/{type?}', 'cms.index');
 Route::view('/cms/sites/{siteId}/pages/{pageId}', 'cms.index');
