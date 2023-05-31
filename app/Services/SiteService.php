@@ -296,7 +296,7 @@ class SiteService extends AbstractService
      */
     public function getPageFromUrl(Collection $params)
     {
-        if ($params->get('pathname') == '') {
+        if ($params->get('pathname') == '' || $params->get('pathname') == '/') {
             return $this->makePageRepository()->findIndexByUrl(
                 $params->get('domain')
             );

@@ -15,6 +15,7 @@ class DomainController extends Controller
         $params->put('domain', $request->host());
         $params->put('pathname', $request->path());
 
+        /** @var $service App\Services\SiteService */
         $service = $this->service('SiteService');
         $page = $service->getPageFromUrl($params);
         if ($page === null) {
