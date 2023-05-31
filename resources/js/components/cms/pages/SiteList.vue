@@ -120,6 +120,10 @@ export default {
             this.isEditMode = false;
         },
 
+        openSiteView(e) {
+            window.open(e.target.href, 'site_view');
+        },
+
     },
 };
 </script>
@@ -175,6 +179,7 @@ export default {
                             v-if="site.domain != '' && site.domain != null"
                             class="text-decoration-none"
                             :href="'http://' + site.domain"
+                            @click.prevent.stop="openSiteView"
                         >http://{{ site.domain }}</a>
                     </td>
                     
