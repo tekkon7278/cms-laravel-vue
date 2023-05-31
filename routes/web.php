@@ -24,9 +24,3 @@ Route::view('/cms/sites/{siteId}/pages/{pageId}', 'cms.index');
 
 Route::get('/sites/{siteId}', [Controllers\IndexController::class, 'index']);
 Route::get('/sites/{siteId}/pages/{pageId}', [Controllers\IndexController::class, 'index']);
-
-Route::get('/api/path', [Controllers\Reource\PageController::class, 'showByPathname']);
-
-Route::get('{all}', [Controllers\DomainController::class, 'index']);
-// Route::get('{all}', [Controllers\DomainController::class, 'index']);
-

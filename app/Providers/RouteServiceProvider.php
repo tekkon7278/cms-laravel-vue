@@ -33,8 +33,14 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
+            // CMSのドメインの場合
             Route::middleware('web')
+                ->domain(env('APP_DOMAIN'))
                 ->group(base_path('routes/web.php'));
+            
+            // 作成サイトに設定されたドメインでのアクセスの場合
+            Route::middleware('web')
+                ->group(base_path('routes/domain.php'));
         });
     }
 

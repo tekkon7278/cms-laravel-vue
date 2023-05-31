@@ -38,7 +38,8 @@ class Page extends AbstractEntity
             'rule' => [
                 'required',
                 'max:30',
-                'regex:/^[a-z_]+$/',
+                'regex:/^[a-z\-]+$/',
+                'not_in:api',
                 'unique:pages,pathname,{id},id,parent_id,{parentId}',
             ],
         ],

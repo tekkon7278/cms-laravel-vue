@@ -43,6 +43,7 @@ export default {
         expand-on-hover
         rail
         color="grey-darken-3"
+        permanent=true
     >
         <!-- サイト情報表示 -->
         <v-list>

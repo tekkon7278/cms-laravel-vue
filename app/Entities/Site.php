@@ -30,7 +30,7 @@ class Site extends AbstractEntity
             'rule' => [
                 'required',
                 'max:30',
-                'regex:/^[a-z][a-z._]*\.[a-z]*/',
+                'regex:/^[a-z][a-z.-]*\.[a-z]*/',
                 'unique:sites,domain,{id},id',
             ]
         ],
