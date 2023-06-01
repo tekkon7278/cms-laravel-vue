@@ -86,6 +86,9 @@ export default {
             this.isProcessing = true;
             try {
 
+            console.log(this.pageEdited.title);
+            console.log(this.pageEdited);
+            console.log(this.pageEdited.title);
                 // APIリクエスト
                 const pages = this.$entities.site(this.siteId).pages();
                 const response = await pages.create({
@@ -102,7 +105,7 @@ export default {
 
                 // 親コンポーネントへイベント通知し、UI更新
                 this.pageEdited.id = response.id;
-                this.$emit('created', this.pageEdited);
+                this.$emit('created', {...this.pageEdited});
 
                 this.cancelEdit();
 

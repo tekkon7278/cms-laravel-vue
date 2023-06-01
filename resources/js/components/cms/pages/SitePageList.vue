@@ -67,6 +67,7 @@ export default {
          */
         appendPage(pageEdited) {
             const beforeIndex = this.pages.findIndex((page) => page.id == pageEdited.beforePageId);
+            console.log(pageEdited);
             this.pages.splice(beforeIndex + 1, 0, pageEdited);
         },
         
