@@ -77,6 +77,9 @@ export default {
             this.site = await this.$entities
                 .site(this.siteId)
                 .fetch();
+
+            // カラーテーマを設定
+            this.$vuetify.theme.global.name = this.site.colorTheme;
         },
 
         /**
@@ -121,7 +124,7 @@ export default {
     
     <!-- サイトヘッダ表示 -->
 
-    <v-app-bar color="primary" height="70">
+    <v-app-bar color="primary" height="70" v-if="'id' in site">
 
         <!-- ロゴまたはサイト名表示 -->
         <v-app-bar-title class="site-name">
