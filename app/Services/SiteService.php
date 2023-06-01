@@ -272,6 +272,7 @@ class SiteService extends AbstractService
      */
     public function getSitePages(Collection $params)
     {
+        logger()->debug($params->has('isPublished'));
         if ($params->has('isPublished') && $params->get('isPublished') == 1) {
             return $this->makePageRepository()->findBySiteIdAndPublished($params->get('siteId'));
         } else {
