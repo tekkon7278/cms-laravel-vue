@@ -277,4 +277,7 @@ pre {
     background-color: #eeeeee;
     padding: 10px 20px;
 }
+img {
+    width: 100%;
+}
 </style>

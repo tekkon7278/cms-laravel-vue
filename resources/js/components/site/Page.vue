@@ -89,12 +89,12 @@ export default {
 
     <v-main>
         <v-container class="my-6">
-            
+
             <h1 v-if="page.isShowTitle">{{ page.title }}</h1>            
             <v-container>
                 
                 <!-- コンテンツ表示 -->
-                <v-container
+                <div
                     v-for="content in contents" :key="content.id"
                 >
                 
@@ -125,7 +125,7 @@ export default {
                             </v-container>
                         </v-col>
                     </v-row>
-                </v-container>
+                </div>
 
             </v-container>
         </v-container>  
@@ -151,5 +151,8 @@ ul {
 pre {
     background-color: #eeeeee;
     padding: 10px 20px;
+}
+img {
+    width: 100%;
 }
 </style>

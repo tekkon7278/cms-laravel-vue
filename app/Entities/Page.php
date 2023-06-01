@@ -43,7 +43,7 @@ class Page extends AbstractEntity
                 'max:30',
                 'regex:/^[a-z\-]+$/',
                 'not_in:api',
-                'unique:pages,pathname,{id},id,parent_id,{parentId}',
+                'unique:pages,pathname,{id},id,site_id,{siteId},parent_id,{parentId}',
             ],
         ],
         'isIndex' => [
