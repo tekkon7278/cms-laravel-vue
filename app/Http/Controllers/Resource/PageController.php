@@ -20,6 +20,7 @@ class PageController extends Controller
      */
     public function index(int $siteId, Request $request)
     {
+        logger()->debug($request->all());
         $params = $this->paramsFromRequest($request);
         $params->put('siteId', $siteId);
 
