@@ -36,10 +36,22 @@ export default {
              * サイトデータ。UI連動。
              * @type {Object}
              */
+            site: {},
+
+            /**
+             * サイトのページ一覧データ。UI連動。
+             * @type {array<Object>}
+             */
+            pages: [],
+
+            /**
+             * ページデータ。UI連動。
+             * @type {Object}
+             */
             page: {},
 
             /**
-             * サイトのコンテンツデータ。UI連動。
+             * ページのコンテンツデータ。UI連動。
              * @type {array<Object>}
              */
             contents: [],
@@ -50,11 +62,34 @@ export default {
     beforeMount() {
 
         // 初期表示時にページ表示に必要なデータを遅延取得しコンテンツ描画
+        this.getSite();
+        this.getSitePages();
         this.getPage();
         this.getContents();
     },
 
     methods: {
+
+        /**
+         * サイトデータを取得
+         */
+        async getSite() {
+            this.site = await this.$entities
+                .site(this.siteId)
+                .fetch();
+        },
+
+        /**
+         * サイトのページ一覧データを取得
+         */
+        async getSitePages() {
+            this.pages = await this.$entities
+                .site(this.siteId)
+                .pages()
+                .fetchAll({
+                    is_published: 1,
+                });
+        },
 
         /**
          * ページデータを取得
@@ -85,7 +120,33 @@ export default {
 <v-app>
     
     <!-- サイトヘッダ表示 -->
-    <SiteHeader :siteId="siteId"></SiteHeader>
+
+    <v-app-bar color="primary" height="70">
+
+        <!-- ロゴまたはサイト名表示 -->
+        <v-app-bar-title class="site-name">
+            <a href="/">
+                <img
+                    v-show="site.logoImage != null"
+                    :src="site.logoImage"
+                >
+                <span
+                    v-show="site.logoImage == null"
+                >{{ site.name }}</span>
+            </a>
+        </v-app-bar-title>
+
+        <!-- メニュー表示 -->
+        <v-tabs>
+            <v-tab
+                v-for="(page, index) in pages"
+                :key="index"
+                :href="(page.isIndex) ? '/' : page.pathname"
+            >{{ page.title }}
+            </v-tab>
+        </v-tabs>
+
+    </v-app-bar>
 
     <v-main>
         <v-container class="my-6">
@@ -151,8 +212,5 @@ ul {
 pre {
     background-color: #eeeeee;
     padding: 10px 20px;
-}
-img {
-    width: 100%;
 }
 </style>

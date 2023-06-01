@@ -109,7 +109,6 @@ export default {
                     <!-- ページ情報表示・編集 -->
                     <MenuItemEditor
                         :page="page"
-                        :isHome="page.isIndex"
                         @destroyed="destroyPage"
                     ></MenuItemEditor>
                     

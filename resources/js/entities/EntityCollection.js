@@ -50,8 +50,8 @@ export default class EntityCollection {
      * リストデータ取得
      * @returns {array}
      */
-    async fetchAll() {
-        const response = await this.getRepository().fetchAll();
+    async fetchAll(params) {
+        const response = await this.getRepository().fetchAll(params);
         return response.data;
     }
 

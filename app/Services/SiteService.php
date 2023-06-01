@@ -193,6 +193,7 @@ class SiteService extends AbstractService
             $homePage = $this->makePageEntity($params);
             $homePage->setSiteId($siteId);
             $homePage->setIsIndex(true);
+            $homePage->setIsPublished(true);
             $homePage->setTitle('ホーム');
             $this->makePageRepository()->regist($homePage);
 
@@ -271,7 +272,11 @@ class SiteService extends AbstractService
      */
     public function getSitePages(Collection $params)
     {
-        return $this->makePageRepository()->findBySiteId($params->get('siteId'));
+        if ($params->has('isPublished') && $params->get('isPublished') == 1) {
+            return $this->makePageRepository()->findBySiteIdAndPublished($params->get('siteId'));
+        } else {
+            return $this->makePageRepository()->findBySiteId($params->get('siteId'));
+        }
     }
     
     /**

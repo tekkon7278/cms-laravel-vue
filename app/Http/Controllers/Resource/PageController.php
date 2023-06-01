@@ -18,9 +18,9 @@ class PageController extends Controller
      * @param integer $siteId
      * @return Collection
      */
-    public function index(int $siteId)
+    public function index(int $siteId, Request $request)
     {
-        $params = $this->paramsFromRequest();
+        $params = $this->paramsFromRequest($request);
         $params->put('siteId', $siteId);
 
         $service = $this->service('SiteService');

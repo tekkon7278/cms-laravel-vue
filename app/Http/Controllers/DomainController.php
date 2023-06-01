@@ -20,6 +20,8 @@ class DomainController extends Controller
         $service = $this->service('SiteService');
         $page = $service->getPageFromUrl($params);
         if ($page === null || $page->isPublished() === false) {
+            $message = ($page === null) ? 'page data not found.' : 'page is not published.';
+            logger()->info($message);
             abort(404);
         }
 

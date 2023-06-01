@@ -101,6 +101,23 @@ class PageRepository extends AbstractRepository
     }
 
     /**
+     * サイトID指定でページリスト情報取得
+     *
+     * @param int $siteId
+     * @return Collection
+     */
+    public function findBySiteIdAndPublished($siteId)
+    {
+        $pageRows = $this->buildGetPageContentsModel()
+            ->where('P.site_id', $siteId)
+            ->where('P.is_published', 1)
+            ->orderBy('sort')
+            ->get();
+        $pages = $this->createEntityCollection('Page', $pageRows);
+        return $pages;
+    }
+
+    /**
      * サイトID指定でサイトのindexページ情報取得
      *
      * @param int $siteId

@@ -70,8 +70,12 @@ export default class Repository {
      * @returns {Object} 
      * @memberof Repository
      */
-    fetchAll(params) {
-        return axios.get(this.getUrl(), params);
+    fetchAll(paramsa) {
+        if (typeof paramsa === 'object') {
+            return axios.get(this.getUrl(), {params: paramsa});
+        } else {
+            return axios.get(this.getUrl());
+        }
     }
 
     /**
