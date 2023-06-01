@@ -91,7 +91,6 @@ export default {
 <v-main>
     <v-container class="my-6">
 
-        <h1>サイトページ</h1>
         <v-container>
 
             <v-list id="menu-item" class="menus">

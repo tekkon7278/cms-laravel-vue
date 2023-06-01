@@ -150,7 +150,7 @@ export default {
 
 <template>
     <v-list-item
-        :class="['item', {'home': page.isIndex }]"
+        :class="['py-4', 'item', {'home': page.isIndex }]"
     >
 
         <!-- ページ設定表示  -->
@@ -170,6 +170,24 @@ export default {
                     <!-- ページタイトル -->
                     {{ pageEdited.title }}
 
+                    <!--公開状態表示 -->
+                    <v-label
+                        v-show="pageEdited.isPublished"
+                        class="text-indigo-darken-4 text-body-2 ml-4"
+                    ><v-icon class="mr-1">mdi-eye</v-icon>公開中</v-label>
+                    <v-label
+                        v-show="!pageEdited.isPublished"
+                        class="text-red-darken-4 text-body-2 ml-4"
+                    ><v-icon class="mr-1">mdi-eye-off</v-icon>非公開</v-label>
+
+                </v-card-title>
+
+                <!-- URLパスキー表示 -->
+                <v-card-subtitle
+                    class="ml-9"
+                >{{ pageEdited.pathname }}/</v-card-subtitle>
+
+                <v-card-actions class="ml-9">
                     <!-- ボタン -->
                     <ButtonText
                         v-if="!page.isIndex"
@@ -178,7 +196,7 @@ export default {
                         @click="isEditMode=true"
                     ></ButtonText>
                     <ButtonText
-                        text="コンテンツ管理"
+                        text="コンテンツ編集"
                         icon_name="file-move-outline"
                         @clickButton="$router.push({name: 'page-edit', params: {pageId: page.id}})"
                     ></ButtonText>
@@ -187,28 +205,7 @@ export default {
                         icon_name="eye"
                         @clickButton="openPreview(page.siteId, page.id)"
                     ></ButtonText>
-
-                </v-card-title>
-
-                <!-- URLパスキー表示 -->
-                <v-card-subtitle
-                    class="ml-11"
-                >{{ pageEdited.pathname }}/</v-card-subtitle>
-
-                <!--公開状態表示 -->
-                <v-card-text
-                    class="ml-11 py-1"
-                >
-                    <v-label
-                        v-show="pageEdited.isPublished"
-                        class="text-indigo-darken-4 text-body-2"
-                    ><v-icon class="mr-1">mdi-eye</v-icon>公開中</v-label>
-                    <v-label
-                        v-show="!pageEdited.isPublished"
-                        class="text-red-darken-4"
-                    ><v-icon class="mr-1">mdi-eye-off</v-icon>非公開</v-label>
-                </v-card-text>
-
+                </v-card-actions>
             </v-card>
         </div>
         

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 /**
  * ブラウザからドメインでアクセスした場合のサイト表示コントローラー
@@ -13,12 +14,12 @@ class DomainController extends Controller
     {
         $params = $this->paramsFromRequest();
         $params->put('domain', $request->host());
-        $params->put('pathname', $request->path());
-
+        $params->put('pathname', (string)Str::of($request->path())->trim('/'));
+        
         /** @var $service App\Services\SiteService */
         $service = $this->service('SiteService');
         $page = $service->getPageFromUrl($params);
-        if ($page === null) {
+        if ($page === null || $page->isPublished() === false) {
             abort(404);
         }
 

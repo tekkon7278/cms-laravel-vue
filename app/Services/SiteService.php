@@ -102,7 +102,6 @@ class SiteService extends AbstractService
         if ($params->has('isPublished')) {
             $page->setIsPublished($params->get('isPublished'));
         }
-        $page->setIsIndex(false);
         return $page;
     }
 
@@ -324,6 +323,7 @@ class SiteService extends AbstractService
             $this->begin();
 
             $page = $this->makePageEntity($params);
+            $page->setIsIndex(false);
             $id = $this->makePageRepository()->regist($page);
 
             $this->commit();

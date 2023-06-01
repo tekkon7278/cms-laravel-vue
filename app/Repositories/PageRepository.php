@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use App\Entities\EntityInterface;
 use App\Entities\Page;
 use App\Models\PageModel;
@@ -131,7 +132,7 @@ class PageRepository extends AbstractRepository
         return $pageModel
             ->from($pageModel->getTable() . ' AS P')
             ->join($siteModel->getTable(). ' AS S', "S.id", "=", "P.site_id")
-            ->select('P.*', 'S.domain');
+            ->select('P.*', 'S.domain', DB::raw('S.is_published AND P.is_published AS is_published'));
     }
 
     /**
@@ -182,7 +183,6 @@ class PageRepository extends AbstractRepository
         if (count($values) === 0) {
             return true;
         }
-
         $pageModel = new PageModel();
         $result = $pageModel
             ->where('id', $page->getId())

@@ -110,7 +110,6 @@ export default {
 <v-main :style="'font-size:' + fontSize + 'rem;'">
     <SiteHeader :siteId="siteId"></SiteHeader>
     <v-container class="my-6">
-        <h1>デザイン設定</h1>
 
         <h2>カラー</h2>
 

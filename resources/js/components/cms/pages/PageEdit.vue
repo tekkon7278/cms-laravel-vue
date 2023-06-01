@@ -135,7 +135,7 @@ export default {
 <template>
 
 <CmsHeader
-    title="ページ編集"
+    title="コンテンツ編集"
     :menus="[{key: 'preview', text: 'プレビュー', icon: 'eye'}]"
     @clickIcon="openPreviewWindow"
 ></CmsHeader>
@@ -149,7 +149,7 @@ export default {
             {{ page.title }}        
             <v-switch
                 v-model="page.isShowTitle"
-                :label="page.isShowTitle ? 'タイトル表示' : 'タイトル非公開'"
+                :label="page.isShowTitle ? 'タイトル表示' : 'タイトル非表示'"
                 @update:modelValue="updateIsShowTitle"
                 hide-details
                 color="teal-darken-2"

@@ -44,7 +44,7 @@ export default {
         size="small"
         :prepend-icon="'mdi-' + icon_name"
         :color="(isDisabled) ? 'grey' : 'teal-darken-3'"
-        variant="text"
+        variant="tonal"
         @click="$emit('clickButton', $event)"
     >{{ text }}</v-btn>
 </template>
