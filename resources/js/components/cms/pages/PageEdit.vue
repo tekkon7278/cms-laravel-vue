@@ -117,6 +117,15 @@ export default {
         destroyContent(arg) {
             const destroyIndex = this.contents.findIndex((content) => content.id == arg.contentId);
             this.contents.splice(destroyIndex, 1);
+        },
+
+        /**
+         * タイトル表示非表示の更新
+         */
+        async updateIsShowTitle() {
+            const response = await this.$entities.site(this.siteId).page(this.pageId).update({
+                is_show_title: this.page.isShowTitle,
+            });
         }
         
     },
@@ -136,7 +145,16 @@ export default {
 <v-main>
     <v-container class="my-6">
 
-        <h1>{{ page.title }}</h1>
+        <h1>
+            {{ page.title }}        
+            <v-switch
+                v-model="page.isShowTitle"
+                :label="page.isShowTitle ? 'タイトル表示' : 'タイトル非公開'"
+                @update:modelValue="updateIsShowTitle"
+                hide-details
+                color="teal-darken-2"
+            ></v-switch>
+        </h1>
 
         <!-- 初期読み込み中表示 -->
         <v-progress-linear

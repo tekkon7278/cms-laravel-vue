@@ -88,9 +88,9 @@ export default {
     <SiteHeader :siteId="siteId"></SiteHeader>
 
     <v-main>
-        <v-container class="my-6">    
-
-            <h1>{{ page.title }}</h1>            
+        <v-container class="my-6">
+            
+            <h1 v-if="page.isShowTitle">{{ page.title }}</h1>            
             <v-container>
                 
                 <!-- コンテンツ表示 -->

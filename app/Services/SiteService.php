@@ -87,6 +87,9 @@ class SiteService extends AbstractService
         if ($params->has('siteId')) {
             $page->setSiteId($params->get('siteId'));
         }
+        if ($params->has('isShowTitle')) {
+            $page->setIsShowTitle($params->get('isShowTitle'));
+        }
         if ($params->has('pageTitle')) {
             $page->setTitle($params->get('pageTitle'));
         }

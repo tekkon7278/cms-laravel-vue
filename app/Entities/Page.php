@@ -28,6 +28,9 @@ class Page extends AbstractEntity
         'parentId' => [],
         'beforeId' => [],
         'siteId' => [],
+        'isShowTitle' => [
+            'type' => 'boolean',
+        ],
         'title' => [
             'rule' => [
                 'required',

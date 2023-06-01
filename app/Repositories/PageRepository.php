@@ -19,6 +19,7 @@ class PageRepository extends AbstractRepository
         'id' => 'id',
         'parent_id' => 'parentId',
         'site_id' => 'siteId',
+        'is_show_title' => 'isShowTitle',
         'page_title' => 'title',
         'pathname' => 'pathname',
         'is_index' => 'isIndex',
