@@ -239,20 +239,24 @@ class ContentRepository extends AbstractRepository
      */
     public  function update(EntityInterface $content)
     {
-        $contentModel = new ContentModel();
+        $contentModel = new ContentModel();        
+        $values = $this->getModelValuesFromEntity($content);
+
+        $updateValues = [
+            'padding' => $values['padding'],
+        ];
         
         if ($content->getType() == Content::TYPE_LIST) {
             $this->updateItems($content);
         } else {
-            $values = $this->getModelValuesFromEntity($content);
             $valueColumn = ($content->getType() == Content::TYPE_IMAGE) ? 'binary_content' : 'content';
-            $contentModel
-                ->where('id', $content->getId())
-                ->update([
-                    $valueColumn => $content->getValue(),
-                    'padding' => $values['padding'],
-                ]);
+            $updateValues[$valueColumn] = $values['content'];
         }
+
+        $contentModel
+            ->where('id', $content->getId())
+            ->update($updateValues);
+
         return true;
     }
 
