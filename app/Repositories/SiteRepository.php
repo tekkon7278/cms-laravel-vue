@@ -32,7 +32,9 @@ class SiteRepository extends AbstractRepository
     public function findAll()
     {
         $siteModel = new SiteModel();
-        $siteRows = $siteModel->get();
+        $siteRows = $siteModel
+            ->orderBy('sort')
+            ->get();
 
         $entities = $this->createEntityCollection('Site', $siteRows);
         return $entities;
