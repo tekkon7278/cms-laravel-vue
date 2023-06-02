@@ -5,7 +5,7 @@
       'resources/scss/base.scss',
       'resources/js/app.js'
     ])
-    <title>@yield('title')</title>
+    <title>{{ $page->title() }}</title>
   </head>
   <body>
     <div class="frame" id="app">

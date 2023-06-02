@@ -148,8 +148,12 @@ export default {
 
             <thead>
                 <tr>
-                    <th class="font-weight-bold">サイト名</th>
-                    <th class="font-weight-bold">URL</th>
+                    <th class="font-weight-bold">サイト名
+                        <p class="explanation font-weight-thin">クリックでサイトの設定へ移動します</p>
+                    </th>
+                    <th class="font-weight-bold">URL
+                        <p class="explanation font-weight-thin">クリックでサイトへ移動します</p>
+                    </th>
                     <th class="font-weight-bold">公開状態</th>
                 </tr>
             </thead>
@@ -214,6 +218,7 @@ export default {
                     name="plus-circle"
                     @clickIcon="isEditMode=true"
                 ></ButtonIcon>
+                <p class="explanation font-weight-thin ml-2">新しいサイトを作成します</p>
             </div>
 
             <!-- 編集フォーム -->

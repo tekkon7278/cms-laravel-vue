@@ -171,6 +171,9 @@ export default {
                             @input="site.name = $event"
                             @canceled="site.name = originalSiteName"
                         ></SiteItemTextEditor>
+                        <p class="pt-4 explanation">
+                            サイトロゴを設定しない場合にヘッダに表示されます。
+                        </p>
                     </v-sheet>
                 </v-col>
             </v-row>
@@ -191,6 +194,10 @@ export default {
                             @input="site.domain = $event"
                             @canceled="site.domain = originalDomain"
                         ></SiteItemTextEditor>
+                        <p class="pt-4 explanation">
+                            ここで設定したドメインでサイト公開するには、そのドメインがIPアドレス：118.27.109.13に解決されるようにDNSのレコード設定もしくは端末のhosts設定が必要です。<br>
+                            "aaa.tkng.site"や"bbb.tkng.site"など、"tkng.site"のサブドメインであれば全てこのIPに解決されます。自由にご利用ください。
+                        </p>
                     </v-sheet>
                 </v-col>
             </v-row>
@@ -261,7 +268,9 @@ export default {
             <!-- コピーサイト作成ボタン（未実装） -->
             <v-row align="center">
                 <v-col cols="2">
-                    <v-sheet class="mx-3 my-8 title">コピーサイト作成</v-sheet>     
+                    <v-sheet class="mx-3 my-8 title">コピーサイト作成                        
+                        <p class="warning font-weight-thin">※未実装</p>
+                    </v-sheet>     
                 </v-col>
                 <v-col cols="8">
                     <v-sheet class="mx-3 my-8">
