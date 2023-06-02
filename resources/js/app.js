@@ -40,7 +40,10 @@ const vuetify = createVuetify({
     theme: { 
         defaultTheme: 'blue_2',
         themes: colorThemes,
-    }
+        options: {
+            customProperties: true
+        }
+    },
 });
 
 const router = createRouter({

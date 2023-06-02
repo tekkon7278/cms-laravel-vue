@@ -133,6 +133,9 @@ class SiteService extends AbstractService
         if ($params->has('value')) {
             $content->setValue($params->get('value'));
         }
+        if ($params->has('padding')) {
+            $content->setPadding($params->get('padding'));
+        }
         if ($params->has('beforeContentId')) {
             $content->setBeforeId($params->get('beforeContentId'));
         }

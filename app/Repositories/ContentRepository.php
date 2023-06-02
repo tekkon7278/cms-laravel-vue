@@ -22,6 +22,7 @@ class ContentRepository extends AbstractRepository
         'content_type' => 'type',
         'content_title' => 'title',
         'content' => 'value',
+        'padding' => 'padding',
         'is_published' => 'isPublished',
     ];
 
@@ -243,11 +244,13 @@ class ContentRepository extends AbstractRepository
         if ($content->getType() == Content::TYPE_LIST) {
             $this->updateItems($content);
         } else {
+            $values = $this->getModelValuesFromEntity($content);
             $valueColumn = ($content->getType() == Content::TYPE_IMAGE) ? 'binary_content' : 'content';
             $contentModel
                 ->where('id', $content->getId())
                 ->update([
                     $valueColumn => $content->getValue(),
+                    'padding' => $values['padding'],
                 ]);
         }
         return true;

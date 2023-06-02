@@ -157,11 +157,11 @@ export default {
             <h1 v-if="page.isShowTitle">{{ page.title }}</h1>            
             <v-container>
                 
-                <!-- コンテンツ表示 -->
-                <div
+                <!-- コンテンツ表示 -->                    
+                <v-container
+                    :class="'pa-' + (content.padding * 4)"
                     v-for="content in contents" :key="content.id"
                 >
-                
                     <!-- 通常コンテンツ -->
                     <div class="text" v-if="content.type == 'text'">{{ content.value }}</div>
                     <ul v-if="content.type == 'list'">
@@ -172,24 +172,22 @@ export default {
                     <img v-if="content.type == 'image'" :src="content.value">
                     
                     <!-- 段組みレイアウトコンテンツ -->
-                    <v-row  v-if="content.type == 'columns'">
+                    <v-row class="my-4" v-if="content.type == 'columns'">
                         <v-col
-                            class="column"
+                            class="column pa-10"
                             v-for="(innerContent, index) in content.value"
                             :key="index"
                         >
-                            <v-container class="pa-0">
-                                <div class="text" v-if="innerContent.type == 'text'">{{ innerContent.value }}</div>
-                                <ul v-if="innerContent.type == 'list'">
-                                    <li v-for="(item, index) in innerContent.value" :key="index">{{ item }}</li>
-                                </ul>
-                                <h2 v-if="innerContent.type == 'title'">{{ innerContent.value }}</h2>
-                                <pre v-if="innerContent.type == 'code'">{{ innerContent.value }}</pre>
-                                <img v-if="innerContent.type == 'image'" :src="innerContent.value">
-                            </v-container>
+                            <div class="text" v-if="innerContent.type == 'text'">{{ innerContent.value }}</div>
+                            <ul v-if="innerContent.type == 'list'">
+                                <li v-for="(item, index) in innerContent.value" :key="index">{{ item }}</li>
+                            </ul>
+                            <h2 v-if="innerContent.type == 'title'">{{ innerContent.value }}</h2>
+                            <pre v-if="innerContent.type == 'code'">{{ innerContent.value }}</pre>
+                            <img v-if="innerContent.type == 'image'" :src="innerContent.value">
                         </v-col>
                     </v-row>
-                </div>
+                </v-container>
 
             </v-container>
         </v-container>  

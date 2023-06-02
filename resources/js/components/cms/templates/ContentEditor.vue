@@ -113,7 +113,7 @@ export default {
                 }
 
                 // 親コンポーネントへイベント通知し、UI更新
-                this.$emit('updated', this.contentEdited);
+                this.$emit('updated', {...this.contentEdited});
 
                 this.isEditMode = false;
 
@@ -187,11 +187,12 @@ export default {
 </script>
 
 <template>
-    <v-container>
-        
+    <v-container
+        fluid
+    >        
         <!-- コンテンツ内容表示 -->
-        <div
-            class="disp"
+        <v-container
+            :class="['disp', 'pa-' + (content.padding * 4)]"
             v-show="!isEditMode"
             @click="this.isEditMode = true"
         >            
@@ -202,33 +203,58 @@ export default {
             <h2 v-if="content.type == 'title'">{{ content.value }}</h2>
             <pre v-if="content.type == 'code'">{{ content.value }}</pre>
             <img v-if="content.type == 'image'" :src="content.value">
-        </div>
+        </v-container>
         
         <!-- コンテンツ編集フォーム -->
         <div class="edit" v-show="isEditMode">
-            <v-textarea
-                v-if="content.type=='text' || content.type=='code'"
-                v-model="contentEdited.value"
-                :disabled="isProcessing"
-            ></v-textarea>
-            <v-text-field
-                v-if="content.type=='title'"
-                v-model="contentEdited.value"
-                :disabled="isProcessing"
-            />
-            <InputList
-                v-if="content.type=='list'"
-                :items="contentEdited.value"
-                :isDisabled="isProcessing"
-                @changeItems="setValue"
-            ></InputList>
-            <img v-if="content.type == 'image'" :src="content.value">
-            <v-file-input
-                v-if="content.type=='image'"
-                :disabled="isProcessing"
-                @change="setValue($event.target.files[0])"
-            ></v-file-input>
-            <ErrorDisplay :messages="errors"></ErrorDisplay>
+            <v-container :class="'pa-' + (contentEdited.padding * 4)">
+                <v-textarea
+                    v-if="content.type=='text' || content.type=='code'"
+                    v-model="contentEdited.value"
+                    :disabled="isProcessing"
+                ></v-textarea>
+                <v-text-field
+                    v-if="content.type=='title'"
+                    v-model="contentEdited.value"
+                    :disabled="isProcessing"
+                />
+                <InputList
+                    v-if="content.type=='list'"
+                    :items="contentEdited.value"
+                    :isDisabled="isProcessing"
+                    @changeItems="setValue"
+                ></InputList>
+                <img v-if="content.type == 'image'" :src="content.value">
+                <v-file-input
+                    v-if="content.type=='image'"
+                    :disabled="isProcessing"
+                    @change="setValue($event.target.files[0])"
+                ></v-file-input>
+                <ErrorDisplay :messages="errors"></ErrorDisplay>
+            </v-container>
+            <v-container class="my-0 py-0">
+                <v-row align="center">
+                    <v-col cols="1">マージン</v-col>
+                    <v-col class="pt-7">
+                        <v-slider
+                            v-model="contentEdited.padding"
+                            :ticks="{0: '小', 1: '中', 2: '大', 3: '特大'}"
+                            min="0"
+                            max="3"
+                            step="1"
+                            show-ticks="always"
+                            tick-size="4"
+                        ></v-slider>                    
+                    </v-col>
+                </v-row>
+                <!-- <v-switch
+                    v-model="content.isShowBorder"
+                    :label="content.isShowBorder ? 'ボーダーあり' : 'ボーダーなし'"
+                    @update:modelValue="updateIsPublished"
+                    hide-details
+                    color="teal-darken-2"
+                ></v-switch>             -->
+            </v-container>
             <EditorButtonSet
                 :isProcessing="isProcessing"
                 :isUseDestroy="isUseDestroy"
@@ -253,6 +279,7 @@ export default {
     .column {
         flex: 1;
     }
+
 }
 .disp {
     min-height: 20px;

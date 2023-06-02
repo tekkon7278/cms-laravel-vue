@@ -1,3 +1,7 @@
+body {
+    margin: 0;    
+}
+
 .font-small {
     font-size: 0.9rem;    
 }
@@ -8,56 +12,6 @@
     font-size: 1.1rem;    
 }
 
-body {
-    margin: 0;    
-}
-header {
-    nav {
-        height: auto;
-        overflow: hidden;
-
-        .nav-wrapper {
-            width: 90%;
-            height: auto;
-            margin: 0 auto;
-
-            .brand-logo {
-                font-size: 24px;
-            }
-
-        
-        }
-        /*
-        .nav-wrapper {
-            height: auto;
-            width: 90%;
-            margin: 0 auto;
-            padding: 10px 0;
-
-            .site_name {
-                padding: 100x 0;
-                
-
-                a {
-                    font-size: 20px;
-                    line-height: normal;
-                }
-                .disp, .edit {
-                    padding: 10px 10px;
-                    line-height: normal;
-                }
-                .edit {
-                }
-            }
-
-            i {
-                height: auto;
-                line-height: normal;         
-            }
-        }
-        */
-    }
-}
 
 h1 {
     margin: 10px 0 20px 0;
@@ -66,59 +20,24 @@ h2 {
     margin: 30px 0 20px 0;
 }
 
-.main {
-    .cols1, .cols2 {
-        overflow: hidden;
-    } 
-    .contents {
-        h1 {
-            font-size: 24px;
-            margin: 10px 0 20px 0;
-        }
-        pre {
-            background-color: #eeeeee;
-            padding: 5px 10px;
-        }
-    }
-
-    .cols1 {
-        .contents {
-            margin: 30px auto;
-            width: 90%;
-        }
-
-        ul {
-
-            li {
-
-            }
-        }
-    }
-
-    .cols2 {
-        display: flex;
-        .menu {
-            flex-basis: 200px;
-        }
-        .contents {
-            flex: 1;
-        }
-    }
-
-    .menu {
-        ul {
-
-            li {
-                a {
-                }
-            }
-        }
-    }
-
-    .contents {
-        margin: 30px 30px 0 0;
-        overflow: hidden;
-        background-color: #ffffff;
-    }
-
+.text-color-primary {
+    color: rgb(var(--v-theme-primary));
+}
+.text-color-secondary {
+    color: rgb(var(--v-theme-secondary));
+}
+.text-color-mono1 {
+    color: #000000;
+}
+.text-color-mono2 {
+    color: #444444;
+}
+.text-color-mono3 {
+    color: #888888;
+}
+.text-color-mono4 {
+    color: #cccccc;
+}
+.text-color-mono5 {
+    color: #ffffff;
 }

@@ -2,7 +2,6 @@
 <html>
   <head>
     @vite([
-      'resources/scss/cms.scss',
       'resources/scss/base.scss',
       'resources/js/app.js'
     ])

@@ -99,6 +99,7 @@ export default {
             // 引数とIDの一致するデータを上書きすることでバインドされたリストUI更新
             const index = this.contents.findIndex((content) => content.id == contentEdited.id);
             this.contents[index].value = contentEdited.value;
+            this.contents[index].padding = contentEdited.padding;
         },
 
         /**

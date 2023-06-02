@@ -115,7 +115,7 @@ export default {
 </script>
 
 <template>
-    <v-container>
+    <v-container class="my-4">
 
         <div :class="(isEditMode) ? 'edit' : 'disp'">
 
@@ -128,13 +128,11 @@ export default {
                     v-for="(innerContent, index) in innerContents"
                     :key="index"
                 >
-                    <v-container class="pa-0">
-                        <ContentEditor
-                            :content="innerContent"
-                            :isUseDestroy="false"
-                            @updated="refreshContent"         
-                        ></ContentEditor>
-                    </v-container>
+                    <ContentEditor
+                        :content="innerContent"
+                        :isUseDestroy="false"
+                        @updated="refreshContent"         
+                    ></ContentEditor>
                 </v-col>
 
             </v-row>

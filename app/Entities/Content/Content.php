@@ -36,6 +36,7 @@ class Content extends AbstractEntity
         'type' => [],
         'title' => [],
         'value' => [],
+        'padding' => [],
         'isPublished' => [
             'type' => 'boolean',
         ],
