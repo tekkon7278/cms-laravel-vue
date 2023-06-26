@@ -6,7 +6,7 @@ use App\Entities\Content\Content;
 
 class TitleContent extends Content
 {
-    protected $validateRules = [
+    protected $propertiesOverride = [
         'value' => [
             'rule' => [
                 'required',
